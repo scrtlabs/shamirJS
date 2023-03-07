@@ -298,7 +298,9 @@ let Shamir = {
     let y = new Array(totalShares);
 
     // To increase the security of smaller secrets we pad all data by 128 bits by default.
-    padLength = padLength || 128;
+    if (typeof padLength !== 'number' || padLength < 0) {
+      padLength = 128
+    }
 
     // Do some sanity checks to make sure that we can actually generate a valid output
 
